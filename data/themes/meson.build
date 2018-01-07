@@ -10,7 +10,7 @@ edje_cmd = join_paths(edje.get_pkgconfig_variable('prefix'),
                       'bin', 'edje_cc')
 
 cmd = [ edje_cmd,
-        '-id', join_paths(meson.source_root(), 'data' , 'themes', 'images'),
+        '-id', join_paths(meson.source_root(), 'data' , 'themes'),
         '@INPUT@', '@OUTPUT@'
       ]
 src = 'counter'
@@ -22,8 +22,3 @@ custom_target(src + '.edj',
               install    : true
              )
 meson.add_install_script('perms.sh')
-
-install_data('images/module_icon.png',
-             'images/module_icon1.png',
-              install_dir: join_paths(dir_data, proj, 'images')
-             )
