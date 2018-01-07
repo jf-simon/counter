@@ -1,0 +1,192 @@
+images {
+   image: "module_icon.png" COMP;
+   image: "module_icon1.png" COMP;
+   image: "module_icon_world_white.png" COMP;
+   image: "module_icon_world_black.png" COMP;
+}
+/*
+color_classes {
+    color_class {
+       name: "colorclass";
+       color: 162 18 20 255;
+    }
+}*/
+
+collections {
+   group {
+      name: "counter";
+      
+      parts {
+         part { 
+            name: "background";
+            type : RECT;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               color_class: "colorclass";
+               rel1.relative: 0.05 0.05;
+               rel2.relative: 0.95 0.95;
+               visible: 1;
+					}
+				}
+         part { 
+            name: "value";
+            type : TEXT;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               rel1.relative: 0.0 0.2;
+               rel2.relative: 1.0 0.9;
+               align: 0.5 0.5;
+               visible: 1;
+               color: 255 255 255 255;
+               text.size: 12;
+					}
+				}
+         part { 
+            name: "name";
+            type : TEXT;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               rel1.relative: 0.0 0.055;
+               rel2.relative: 1.0 0.2;
+               align: 0.5 0.5;
+               visible: 1;
+               color: 255 255 255 255;
+               text.text: "";
+               text.size: 10;
+					}
+				}
+         part { 
+            name: "unit";
+            type : TEXT;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               rel1.relative: 0.0 0.8;
+               rel2.relative: 1.0 0.945;
+               align: 0.5 0.5;
+               visible: 1;
+               color: 255 255 255 255;
+               text.text: "";
+               text.size: 10;
+					}
+				}
+         part { 
+            name: "minus";
+            type : RECT;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               color: 255 255 255 0;
+               rel1.relative: 0.05 0.05;
+               rel2.relative: 0.5 0.95;
+               visible: 1;
+					}
+				description {
+               state: "on" 0.0;
+               color: 255 255 255 128;
+               rel1.relative: 0.05 0.05;
+               rel2.relative: 0.5 0.95;
+               visible: 1;
+					}
+				}
+         part { 
+            name: "plus";
+            type : RECT;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               color: 255 255 255 0;
+               rel1.relative: 0.5 0.05;
+               rel2.relative: 0.95 0.95;
+               visible: 1;
+					}
+				description {
+               state: "on" 0.0;
+               color: 255 255 255 128;
+               rel1.relative: 0.5 0.05;
+               rel2.relative: 0.95 0.95;
+               visible: 1;
+					}
+				}
+         part { 
+            name: "r_klick";
+            type : RECT;
+            scale: 1;
+            mouse_events: 1;
+            description {
+               state: "default" 0.0;
+               rel1.relative: 0.5 0.0;
+               rel2.relative: 1.0 1.0;
+               color: 23 255 255 0;
+               visible: 1;
+					}
+				}
+         part { 
+            name: "l_klick";
+            type : RECT;
+            scale: 1;
+            mouse_events: 1;
+            description {
+               state: "default" 0.0;
+               rel1.relative: 0.0 0.0;
+               rel2.relative: 0.5 1.0;
+               color: 23 255 255 0;
+               visible: 1;
+					}
+				}
+         }
+         
+      programs {
+         program {
+            name: "click_settings";
+            signal: "mouse,down,3";
+            source: "r_klick";
+            source: "l_klick";
+            action: SIGNAL_EMIT "settings" "settings";
+         }
+         program {
+            name: "click_plus";
+            signal: "mouse,down,1";
+            source: "r_klick";
+            action: SIGNAL_EMIT "plus" "plus";
+         }
+         program {
+            name: "click_minus";
+            signal: "mouse,down,1";
+            source: "l_klick";
+            action: SIGNAL_EMIT "minus" "minus";
+         }
+         program {
+            name: "plus_in";
+            signal: "mouse,in";
+            source: "r_klick";
+            action: STATE_SET "on" 0.0;
+            target: "plus";
+         }
+         program {
+            name: "plus_out";
+            signal: "mouse,out";
+            source: "r_klick";
+            action: STATE_SET "default" 0.0;
+            target: "plus";
+         }
+         program {
+            name: "minus_in";
+            signal: "mouse,in";
+            source: "l_klick";
+            action: STATE_SET "on" 0.0;
+            target: "minus";
+         }
+         program {
+            name: "minus_out";
+            signal: "mouse,out";
+            source: "l_klick";
+            action: STATE_SET "default" 0.0;
+            target: "minus";
+         }
+      }
+      }
+}

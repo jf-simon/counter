@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Counter
+Exec=@GADGET_DIR@/counter
+Icon=error
