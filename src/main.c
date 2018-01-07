@@ -1,7 +1,7 @@
 #include "counter.h"
 
 Evas_Object *win = NULL;
-static    Evas_Object *popup = NULL;
+// static    Evas_Object *popup = NULL;
 Evas_Object *ly = NULL;
 
 static E_Gadget_Site_Orient gorient;
@@ -184,7 +184,7 @@ anchor_change(void *data, Evas_Object *obj, void *event_info)
    ganchor = (uintptr_t)event_info;
 //    update_anchor_orient(data, gorient, ganchor, obj);
 }
-
+/*
 
 static void
 _mouse_in_online(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
@@ -197,7 +197,7 @@ _mouse_out_online(void *data, Evas_Object *obj EINA_UNUSED, const char *emission
 {
 	   edje_object_signal_emit(ly, "mouse_out_online_go", "e");
 }
-
+*/
 
 
 /*
@@ -213,7 +213,7 @@ delete_popup_evas(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EIN
 }*/
 
 
-
+/*
 static void
 delete_popup_edje(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
 {
@@ -223,7 +223,7 @@ delete_popup_edje(void *data, Evas_Object *obj EINA_UNUSED, const char *emission
         popup = NULL;
         return;
      }
-}
+}*/
 
 /*
 static void
