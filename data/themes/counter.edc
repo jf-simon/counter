@@ -15,7 +15,8 @@ color_classes {
 collections {
    group {
       name: "counter";
-      min: 20 20;
+//       max: 500 500;
+//       min: 50 50;
       parts {
          part { 
             name: "background";
@@ -23,9 +24,11 @@ collections {
             scale: 1;
             description {
                state: "default" 0.0;
+               aspect: 1 1;
+               aspect_preference: BOTH;
                color_class: "colorclass";
-               rel1.relative: 0.05 0.05;
-               rel2.relative: 0.95 0.95;
+               rel1.relative: 0.045 0.045;
+               rel2.relative: 0.955 0.955;
                visible: 1;
 					}
 				}
@@ -44,7 +47,7 @@ collections {
                text: "";
                size: 10;
                fit: 0 1;
-               ellipsis: -1.0;
+               ellipsis: 1.0;
                }
 					}
 				}
@@ -154,8 +157,13 @@ collections {
          program {
             name: "click_settings";
             signal: "mouse,down,3";
-            source: "r_klick";
             source: "l_klick";
+            action: SIGNAL_EMIT "settings" "settings";
+         }
+         program {
+            name: "click_settings1";
+            signal: "mouse,down,3";
+            source: "r_klick";
             action: SIGNAL_EMIT "settings" "settings";
          }
          program {
