@@ -276,7 +276,14 @@ _set_content(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA
    edje_object_part_text_set(ly, "name", ci_name); 
    edje_object_part_text_set(ly, "unit", ci_unit);
 	
-   snprintf(buf, sizeof(buf), "%.2f", ci_value);
+	double new = floor(ci_value);
+	
+	if(fmod(ci_value, new) == 0)
+		snprintf(buf, sizeof(buf), "%.0f", ci_value);
+	else
+		snprintf(buf, sizeof(buf), "%.2f", ci_value);
+	
+   
 	edje_object_part_text_set(ly, "value", buf);
 		
 	printf("set content\n");
@@ -302,8 +309,15 @@ _plus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const char
 	Evas_Object *ly = obj;
 	
    char buf[4096];
-	ci_value = ci_value + ci_factor;
-   snprintf(buf, sizeof(buf), "%.2f", ci_value);
+	ci_value = ci_value + ci_factor;	
+	
+	double new = floor(ci_value);
+	
+	if(fmod(ci_value, new) == 0)
+		snprintf(buf, sizeof(buf), "%.0f", ci_value);
+	else
+		snprintf(buf, sizeof(buf), "%.2f", ci_value);
+	
 	edje_object_part_text_set(ly, "value", buf);
 	
 	_config_save(NULL, NULL, NULL, NULL);
@@ -317,7 +331,14 @@ _minus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const cha
 	Evas_Object *ly = obj;
    char buf[4096];
 	ci_value = ci_value - ci_factor;
-   snprintf(buf, sizeof(buf), "%.2f", ci_value);
+	
+	double new = floor(ci_value);
+	
+	if(fmod(ci_value, new) == 0)
+		snprintf(buf, sizeof(buf), "%.0f", ci_value);
+	else
+		snprintf(buf, sizeof(buf), "%.2f", ci_value);
+	
 	edje_object_part_text_set(ly, "value", buf);
 	
 	_config_save(NULL, NULL, NULL, NULL);
