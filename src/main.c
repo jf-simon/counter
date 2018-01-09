@@ -4,10 +4,9 @@ Evas_Object *win = NULL;
 // static    Evas_Object *popup = NULL;
 Evas_Object *ly = NULL;
 
-static E_Gadget_Site_Orient gorient;
-static E_Gadget_Site_Anchor ganchor;
+// static E_Gadget_Site_Orient gorient;
+// static E_Gadget_Site_Anchor ganchor;
 
-//////////////////////////////// EET /////////////////////////////////
 
 typedef struct {
         Eina_List   *configlist_eet;
@@ -49,8 +48,7 @@ _my_conf_descriptor_init(void)
     #define MY_CONF_SUB_ADD_BASIC(member, eet_type) \
         EET_DATA_DESCRIPTOR_ADD_BASIC                 \
         (_my_conf_sub_descriptor, My_Conf_Type, # member, member, eet_type)
-    
-//     MY_CONF_SUB_ADD_BASIC(note_name, EET_T_STRING);
+
     MY_CONF_SUB_ADD_BASIC(id, EET_T_INT);
     MY_CONF_SUB_ADD_BASIC(name, EET_T_STRING);
     MY_CONF_SUB_ADD_BASIC(unit, EET_T_STRING);
@@ -69,10 +67,6 @@ _my_conf_descriptor_init(void)
     #undef MY_CONF_ADD_BASIC
     #undef MY_CONF_SUB_ADD_BASIC
 }
-
-//////////////////////////////// EET /////////////////////////////////
-
-
 
 
 void
@@ -151,7 +145,7 @@ _my_conf_descriptor_shutdown(void)
     eet_data_descriptor_free(_my_conf_descriptor);
 }*/
 
-
+/*
 static void
 _delete_id(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
@@ -165,10 +159,36 @@ _delete_id(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_inf
          configlist = eina_list_remove(configlist, list_data);
 		}
    }
+   printf("DEL ID\n");
     _save_eet();
+}*/
+
+static Eina_Bool _gadget_exit(void *data, int type, void *event_data) 
+{
+	
+	Eina_List *l;
+	Config_Item *list_data;
+	Ecore_Event_Signal_User *user = event_data;
+	
+	if ( user->number == 2) 
+	{
+
+   EINA_LIST_FOREACH(configlist, l, list_data)
+   {
+	   if(list_data->id == id_num)
+		{
+         configlist = eina_list_remove(configlist, list_data);
+		}
+   }
+   printf("DEL ID\n");
+	
+	_save_eet();
+		
+	} 
+
 }
 
-
+/*
 static void
 orient_change(void *data, Evas_Object *obj, void *event_info)
 {
@@ -184,88 +204,9 @@ anchor_change(void *data, Evas_Object *obj, void *event_info)
    ganchor = (uintptr_t)event_info;
 //    update_anchor_orient(data, gorient, ganchor, obj);
 }
-/*
-
-static void
-_mouse_in_online(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
-{ 
-		edje_object_signal_emit(ly, "mouse_in_online_go", "e");
-}
-
-static void
-_mouse_out_online(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
-{
-	   edje_object_signal_emit(ly, "mouse_out_online_go", "e");
-}
 */
 
 
-/*
-static void
-delete_popup_evas(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
-{
-   if(popup)
-     {
-        evas_object_del(popup);
-        popup = NULL;
-        return;
-     }
-}*/
-
-
-/*
-static void
-delete_popup_edje(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
-{
-   if(popup)
-     {
-        evas_object_del(popup);
-        popup = NULL;
-        return;
-     }
-}*/
-
-/*
-static void
-show_popup(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
-{
-   Evas_Object *win = data;
-	Evas_Object *box, *lbl;
-   char buffer[PATH_MAX];
-   char buffer1[PATH_MAX];
-	
-	if(ci_popup == 1)
-		return;
-	
-   snprintf(buffer, sizeof(buffer), "%s<br>%s", losungstext, losungsvers);
-   snprintf(buffer1, sizeof(buffer1), "%s<br>%s", lehrtext, lehrtextvers);
-	
-   popup = elm_win_add(win, "Popup",  ELM_WIN_POPUP_MENU);
-   elm_win_alpha_set(popup, 1);
-	
-   box = elm_box_add(popup);
-   elm_box_horizontal_set(box, EINA_FALSE);
-   elm_win_resize_object_add(popup, box);
-   evas_object_show(box);
- 
-   lbl = elm_label_add(box);
-	elm_label_line_wrap_set(lbl, ELM_WRAP_WORD);
-   elm_label_wrap_width_set(lbl, ELM_SCALE_SIZE(400));
-   elm_object_text_set(lbl, buffer);
-   elm_box_pack_end(box, lbl);
-   evas_object_show(lbl);
-	
-	lbl = elm_label_add(box);
-	elm_label_line_wrap_set(lbl, ELM_WRAP_WORD);
-   elm_label_wrap_width_set(lbl, ELM_SCALE_SIZE(400));
-   elm_object_text_set(lbl, buffer1);
-   elm_box_pack_end(box, lbl);
-   evas_object_show(lbl);
-
-   evas_object_size_hint_align_set(box, 0.5, 0.5);
-	
-   evas_object_show(popup);
-}*/
 
 void
 _set_content(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
@@ -288,7 +229,6 @@ _set_content(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA
 		
 	printf("set content\n");
 }
-
 
 
 void
@@ -327,7 +267,6 @@ _plus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const char
 void
 _minus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
 {
-// 	Evas_Object *win = data;
 	Evas_Object *ly = obj;
    char buf[4096];
 	ci_value = ci_value - ci_factor;
@@ -365,8 +304,9 @@ int elm_main(int argc, char *argv[])
         id_num = atoi(buf1);
      }
 
-    _my_conf_descriptor_init();
+   _my_conf_descriptor_init();
    _read_eet();
+	
    //new window
    win = elm_win_add(NULL, "counter", ELM_WIN_BASIC);
    elm_win_title_set(win, "Counter");
@@ -386,31 +326,25 @@ int elm_main(int argc, char *argv[])
     // LAYOUT CREATE END// 
 
    evas_object_data_set(win, "config", config);
-	evas_object_resize(win, 10, 10);
+// 	evas_object_resize(win, 10, 10);
    evas_object_show(win);
 	elm_layout_file_set(ly, buf, "counter");
-//    edje_object_signal_callback_add(ly, "online", "online", open_bibelserver, win);
+	
    edje_object_signal_callback_add(ly, "settings", "settings", _settings_2, win);
    edje_object_signal_callback_add(ly, "minus", "minus", _minus, win);
    edje_object_signal_callback_add(ly, "plus", "plus", _plus, win);
-//    edje_object_signal_callback_add(ly, "show_popup", "show_popup", show_popup, win);
-//    edje_object_signal_callback_add(ly, "delete_popup", "delete_popup", delete_popup_edje, win);
-// 	edje_object_signal_callback_add(ly, "mouse_in_online_go", "mouse_in_online_go", _mouse_in_online, NULL);
-//    edje_object_signal_callback_add(ly, "mouse_out_online_go", "mouse_out_online_go", _mouse_out_online, NULL);
-//    edje_object_signal_callback_add(ly, "switch_wheel", "switch_wheel", _set_text_wheel, ly);
 	
 	Evas_Object *edje_obj = elm_layout_edje_get(ly);
 	
-	evas_object_smart_callback_add(win, "gadget_site_orient", orient_change, ly);
-   evas_object_smart_callback_add(win, "gadget_site_anchor", anchor_change, ly);
+// 	evas_object_smart_callback_add(win, "gadget_site_orient", orient_change, ly);
+//    evas_object_smart_callback_add(win, "gadget_site_anchor", anchor_change, ly);
    evas_object_smart_callback_add(win, "gadget_configure", _settings_1, edje_obj);
-   evas_object_smart_callback_add(win, "gadget_removed", _delete_id, NULL);
-		
+//    evas_object_smart_callback_add(win, "gadget_removed", _delete_id, NULL);
+	ecore_event_handler_add(ECORE_EVENT_SIGNAL_USER, _gadget_exit, NULL);
 	
 	
 	_config_load(ly);							// load config data from eet to tmp vars
 	
-// 				Evas_Object *edje_obj = elm_layout_edje_get(ly);
 	set_color(edje_obj);
 	
 	_set_content(edje_obj, NULL, NULL, NULL);
