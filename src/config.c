@@ -134,7 +134,7 @@ _settings_1(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 {
 	Evas_Object *win = obj;
 	Evas_Object *ly = data;
-	
+	printf("SETTINGS1\n");
 	_settings(win, ly, NULL);
 }
 
@@ -145,6 +145,7 @@ _settings_2(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, cons
 	Evas_Object *win = data;
 	Evas_Object *ly = obj;
 	
+	printf("SETTINGS2\n");
 	_settings(win, ly, NULL);
 }
 

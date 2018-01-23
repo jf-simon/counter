@@ -3,3 +3,5 @@ Type=Application
 Name=Counter
 Exec=@GADGET_DIR@/counter
 Icon=error
+X-Gadget-Version=@VERSION@
+X-Gadget-Bugreport=https://www.enlightenment.org/contrib/report-bug

@@ -18,15 +18,16 @@ release = e.get_pkgconfig_variable('release')
 host_os = host_machine.system()
 cc = meson.get_compiler('c')
 
-#if host_os == 'linux'
-#   if cc.has_header_symbol('features.h', '__UCLIBC__')
-#      host_os = 'linux-uclibc'
-#   elif cc.has_header_symbol('features.h', '__dietlibc__')
-#      host_os = 'linux-dietlibc'
-#   else
-#      host_os = 'linux-gnu'
-#   endif
-#endif
+if host_os == 'linux'
+   if cc.has_header_symbol('features.h', '__UCLIBC__')
+      host_os = 'linux-uclibc'
+   elif cc.has_header_symbol('features.h', '__dietlibc__')
+      host_os = 'linux-dietlibc'
+   else
+      host_os = 'linux-gnu'
+   endif
+endif
+
 
 module_arch = '@0@-@1@-@2@'.format(host_os, host_machine.cpu_family(), release)
 
@@ -66,6 +67,7 @@ configure_file(output: 'config.h', configuration: cfg)
 
 desktop_data = configuration_data()
         desktop_data.set('GADGET_DIR', install_dir)
+        desktop_data.set('VERSION', meson.project_version())
 
 configure_file(input: 'counter.desktop.in',
         output: 'counter.desktop',

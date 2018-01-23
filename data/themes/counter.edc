@@ -4,13 +4,13 @@ images {
    image: "module_icon_world_white.png" COMP;
    image: "module_icon_world_black.png" COMP;
 }
-/*
+
 color_classes {
     color_class {
        name: "colorclass";
        color: 162 18 20 255;
     }
-}*/
+}
 
 collections {
    group {
