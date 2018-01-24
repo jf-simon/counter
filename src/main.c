@@ -163,7 +163,8 @@ _delete_id(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_inf
     _save_eet();
 }*/
 
-static Eina_Bool _gadget_exit(void *data, int type, void *event_data) 
+static
+Eina_Bool _gadget_exit(void *data, int type, void *event_data) 
 {
 	
 	Eina_List *l;
@@ -212,19 +213,19 @@ void
 _set_content(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
 {
 	Evas_Object *ly = data;
-   char buf[4096];
+   char buf[64];
 	
    edje_object_part_text_set(ly, "name", ci_name); 
    edje_object_part_text_set(ly, "unit", ci_unit);
 	
+	//TODO move calculation in seperat function	
 	double new = floor(ci_value);
 	
-	if(fmod(ci_value, new) == 0)
+	if(fmod(ci_value, new) == 0 || ci_value == 0)
 		snprintf(buf, sizeof(buf), "%.0f", ci_value);
 	else
 		snprintf(buf, sizeof(buf), "%.2f", ci_value);
-	
-   
+
 	edje_object_part_text_set(ly, "value", buf);
 		
 	printf("set content\n");
@@ -245,15 +246,15 @@ set_color(Evas_Object *ly)
 void
 _plus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
 {
-// 	Evas_Object *win = data;
 	Evas_Object *ly = obj;
 	
-   char buf[4096];
+   char buf[64];
 	ci_value = ci_value + ci_factor;	
 	
+	//TODO move calculation in seperat function	
 	double new = floor(ci_value);
 	
-	if(fmod(ci_value, new) == 0)
+	if(fmod(ci_value, new) == 0 || ci_value == 0)
 		snprintf(buf, sizeof(buf), "%.0f", ci_value);
 	else
 		snprintf(buf, sizeof(buf), "%.2f", ci_value);
@@ -268,12 +269,13 @@ void
 _minus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
 {
 	Evas_Object *ly = obj;
-   char buf[4096];
+   char buf[64];
 	ci_value = ci_value - ci_factor;
 	
+	//TODO move calculation in seperat function
 	double new = floor(ci_value);
 	
-	if(fmod(ci_value, new) == 0)
+	if(fmod(ci_value, new) == 0 || ci_value == 0)
 		snprintf(buf, sizeof(buf), "%.0f", ci_value);
 	else
 		snprintf(buf, sizeof(buf), "%.2f", ci_value);
@@ -326,7 +328,7 @@ int elm_main(int argc, char *argv[])
     // LAYOUT CREATE END// 
 
    evas_object_data_set(win, "config", config);
-// 	evas_object_resize(win, 10, 10);
+	evas_object_resize(win, 50, 50);
    evas_object_show(win);
 	elm_layout_file_set(ly, buf, "counter");
 	
@@ -349,6 +351,7 @@ int elm_main(int argc, char *argv[])
 	
 	_set_content(edje_obj, NULL, NULL, NULL);
 
+	_save_eet();
   //run app RUN!
   elm_run();
 
