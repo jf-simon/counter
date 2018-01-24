@@ -278,12 +278,13 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
    evas_object_size_hint_align_set(en_unit, EVAS_HINT_FILL, EVAS_HINT_FILL);
 	elm_box_pack_end(box_settings, en_unit);
 	evas_object_show(en_unit);
-   evas_object_data_set(mainbox, "en_unit", en_unit);
-	
+   evas_object_data_set(mainbox, "en_unit", en_unit);	
+
 	o = elm_separator_add(box_settings);
-//    elm_separator_horizontal_set(o, EINA_TRUE);
+   elm_separator_horizontal_set(o, EINA_TRUE);
    elm_box_pack_end(box_settings, o);
    evas_object_show(o);
+	
 	
    en_value = elm_entry_add(box_settings);
 //    elm_config_context_menu_disabled_set(EINA_TRUE);
