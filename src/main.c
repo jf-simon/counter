@@ -186,7 +186,7 @@ Eina_Bool _gadget_exit(void *data, int type, void *event_data)
 	_save_eet();
 		
 	} 
-
+	return EINA_TRUE;
 }
 
 /*

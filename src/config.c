@@ -149,6 +149,11 @@ _settings_2(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, cons
 	_settings(win, ly, NULL);
 }
 
+void
+_config_save1(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
+{
+	_config_save(data, NULL, NULL, NULL);	
+}
 
 
 void
@@ -156,12 +161,9 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 {	
 	Evas_Object *en_name, *en_unit, *en_value, *en_factor, *popup, *fr, *cs;
    Evas_Object *o, *mainbox, *box_settings;
-   Evas_Object *check_popup;
 	
 	Evas_Object *ly = obj;
 	Evas_Object *win = data;
-   char buf[PATH_MAX];
-
 		  
    popup = elm_win_add(win, "win", ELM_WIN_BASIC);
    elm_win_alpha_set(popup, 1);
@@ -186,37 +188,6 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
    elm_box_horizontal_set(box_settings, EINA_FALSE);
    E_EXPAND(box_settings);
    evas_object_show(box_settings);
-/*	
-	
-   ic = elm_icon_add(box_settings);
-	snprintf(buf, sizeof(buf), "%s/images/module_icon1.png", PACKAGE_DATA_DIR);
-	elm_image_file_set(ic, buf, NULL);
-   evas_object_size_hint_weight_set(ic, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-   evas_object_size_hint_align_set(ic, EVAS_HINT_FILL, EVAS_HINT_FILL);
-   evas_object_size_hint_min_set(ic, 56, 56);
-	evas_object_color_set(ic, ci_r, ci_g, ci_b, ci_a);
-	elm_box_pack_end(box_settings, ic);
-
-   evas_object_data_set(mainbox, "ic", ic);
-   evas_object_show(ic);*/
-/*
-   tg_theme = elm_check_add(box_settings);
-   elm_object_style_set(tg_theme, "toggle");
-   elm_object_text_set(tg_theme, gettext("Theme: "));
-	elm_check_state_set(tg_theme, ci_theme);
-   elm_object_part_text_set(tg_theme, "on", gettext("Black"));
-   elm_object_part_text_set(tg_theme, "off", gettext("White"));
-   elm_box_pack_end(box_settings, tg_theme);
-   evas_object_show(tg_theme);
-	evas_object_data_set(mainbox, "tg_theme", tg_theme);
-	
-	
-	o = elm_separator_add(box_settings);
-   elm_separator_horizontal_set(o, EINA_TRUE);
-   elm_box_pack_end(box_settings, o);
-   evas_object_show(o);
-	
-	*/
 	
 	cs = elm_colorselector_add(box_settings);
    evas_object_size_hint_weight_set(cs, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -254,7 +225,7 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
    evas_object_show(o);
 	
    en_name = elm_entry_add(box_settings);
-//    elm_config_context_menu_disabled_set(EINA_TRUE);
+   elm_config_context_menu_disabled_set(EINA_FALSE);
    elm_object_text_set(en_name, ci_name);
    elm_entry_editable_set(en_name, EINA_TRUE);
    elm_entry_single_line_set(en_name, EINA_TRUE);
@@ -270,7 +241,7 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
    evas_object_show(o);
 	
    en_unit = elm_entry_add(box_settings);
-//    elm_config_context_menu_disabled_set(EINA_TRUE);
+   elm_config_context_menu_disabled_set(EINA_FALSE);
    elm_object_text_set(en_unit, ci_unit);
    elm_entry_editable_set(en_unit, EINA_TRUE);
    elm_entry_single_line_set(en_unit, EINA_TRUE);
@@ -287,7 +258,7 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 	
 	
    en_value = elm_entry_add(box_settings);
-//    elm_config_context_menu_disabled_set(EINA_TRUE);
+   elm_config_context_menu_disabled_set(EINA_FALSE);
 	
 	char buf1[4096];
    snprintf(buf1, sizeof(buf1), "%.2f", ci_value);
@@ -307,7 +278,7 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
    evas_object_show(o);
 	
    en_factor = elm_entry_add(box_settings);
-//    elm_config_context_menu_disabled_set(EINA_TRUE);
+   elm_config_context_menu_disabled_set(EINA_FALSE);
 	
    snprintf(buf1, sizeof(buf1), "%.2f", ci_factor);
 	
@@ -329,21 +300,10 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
    elm_object_content_set(fr, box_settings);
    elm_box_pack_end(mainbox, fr);
 
-
-	
-//    evas_object_smart_callback_add(check_online, "changed", _check_bibelserver_changed, hoversel);
-//    evas_object_smart_callback_add(check_switch, "changed", _check_switch_changed, sl_switch_time);
-//    evas_object_smart_callback_add(check_layout, "changed", _check_layout_changed, mainbox);
-//    evas_object_smart_callback_add(sl_font, "changed", _sl_font_changed, mainbox);
-//    evas_object_smart_callback_add(sl_font, "changed", _sl_font_changed_value, ly);
-//    evas_object_smart_callback_add(tg_theme, "changed", _tg_changed_cb, ic);
-//    evas_object_smart_callback_add(tg_theme, "changed", _config_save, mainbox);
-	
-	Evas_Object *edje_obj = elm_layout_edje_get(ly);
-   evas_object_smart_callback_add(en_name, "changed", _config_save, mainbox);
-   evas_object_smart_callback_add(en_unit, "changed", _config_save, mainbox);
-   evas_object_smart_callback_add(en_value, "changed", _config_save, mainbox);
-   evas_object_smart_callback_add(en_factor, "changed", _config_save, mainbox);
+   evas_object_smart_callback_add(en_name, "changed", _config_save1, mainbox);
+   evas_object_smart_callback_add(en_unit, "changed", _config_save1, mainbox);
+   evas_object_smart_callback_add(en_value, "changed", _config_save1, mainbox);
+   evas_object_smart_callback_add(en_factor, "changed", _config_save1, mainbox);
 	evas_object_smart_callback_add(cs, "changed", _colorselector_changed_cb, mainbox); 
 	
 
