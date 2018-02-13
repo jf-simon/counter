@@ -195,41 +195,7 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
    elm_box_horizontal_set(box_settings, EINA_FALSE);
    E_EXPAND(box_settings);
    evas_object_show(box_settings);
-	
-	cs = elm_colorselector_add(box_settings);
-   evas_object_size_hint_weight_set(cs, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	evas_object_size_hint_align_set(cs, EVAS_HINT_FILL, EVAS_HINT_FILL);
-    
-	elm_colorselector_mode_set(cs, ELM_COLORSELECTOR_BOTH);
-	elm_colorselector_palette_name_set(cs, "counter");
-	elm_colorselector_palette_color_add(cs, 253, 232, 82, 255);
-   elm_colorselector_palette_color_add(cs, 255, 186, 0, 255);
-   elm_colorselector_palette_color_add(cs, 223, 147, 37, 255);
-   elm_colorselector_palette_color_add(cs, 238, 119, 99, 255);
-   elm_colorselector_palette_color_add(cs, 164, 182, 166, 255);
-   elm_colorselector_palette_color_add(cs, 146, 175, 29, 255);
-   elm_colorselector_palette_color_add(cs, 41, 68, 59, 255);
-   elm_colorselector_palette_color_add(cs, 0, 109, 128, 255);
-   elm_colorselector_palette_color_add(cs, 11, 54, 71, 255);
-   elm_colorselector_palette_color_add(cs, 41, 46, 68, 255);
-   elm_colorselector_palette_color_add(cs, 116, 13, 14, 255);
-   elm_colorselector_palette_color_add(cs, 101, 33, 44, 255);
-   elm_colorselector_palette_color_add(cs, 132, 50, 118, 255);
-   elm_colorselector_palette_color_add(cs, 68, 40, 55, 255);
-   elm_colorselector_palette_color_add(cs, 63, 37, 60, 255);
-   elm_colorselector_palette_color_add(cs, 115, 87, 63, 255);
-   elm_colorselector_palette_color_add(cs, 66, 70, 73, 255);
-   elm_colorselector_palette_color_add(cs, 255, 255, 255, 255);
-   elm_colorselector_palette_color_add(cs, 0, 0, 0, 255);
-   elm_box_pack_end(box_settings, cs);
-   evas_object_show(cs);
-	evas_object_data_set(mainbox, "cs", cs);
-	
-	
-	o = elm_separator_add(box_settings);
-   elm_separator_horizontal_set(o, EINA_TRUE);
-   elm_box_pack_end(box_settings, o);
-   evas_object_show(o);
+
 	
    en_name = elm_entry_add(box_settings);
    elm_config_context_menu_disabled_set(EINA_FALSE);
@@ -299,6 +265,42 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
    evas_object_data_set(mainbox, "en_factor", en_factor);
 
    o = elm_separator_add(box_settings);
+   elm_separator_horizontal_set(o, EINA_TRUE);
+   elm_box_pack_end(box_settings, o);
+   evas_object_show(o);
+	
+	
+	cs = elm_colorselector_add(box_settings);
+   evas_object_size_hint_weight_set(cs, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	evas_object_size_hint_align_set(cs, EVAS_HINT_FILL, EVAS_HINT_FILL);
+    
+	elm_colorselector_mode_set(cs, ELM_COLORSELECTOR_BOTH);
+	elm_colorselector_palette_name_set(cs, "counter");
+	elm_colorselector_palette_color_add(cs, 253, 232, 82, 255);
+   elm_colorselector_palette_color_add(cs, 255, 186, 0, 255);
+   elm_colorselector_palette_color_add(cs, 223, 147, 37, 255);
+   elm_colorselector_palette_color_add(cs, 238, 119, 99, 255);
+   elm_colorselector_palette_color_add(cs, 164, 182, 166, 255);
+   elm_colorselector_palette_color_add(cs, 146, 175, 29, 255);
+   elm_colorselector_palette_color_add(cs, 41, 68, 59, 255);
+   elm_colorselector_palette_color_add(cs, 0, 109, 128, 255);
+   elm_colorselector_palette_color_add(cs, 11, 54, 71, 255);
+   elm_colorselector_palette_color_add(cs, 41, 46, 68, 255);
+   elm_colorselector_palette_color_add(cs, 116, 13, 14, 255);
+   elm_colorselector_palette_color_add(cs, 101, 33, 44, 255);
+   elm_colorselector_palette_color_add(cs, 132, 50, 118, 255);
+   elm_colorselector_palette_color_add(cs, 68, 40, 55, 255);
+   elm_colorselector_palette_color_add(cs, 63, 37, 60, 255);
+   elm_colorselector_palette_color_add(cs, 115, 87, 63, 255);
+   elm_colorselector_palette_color_add(cs, 66, 70, 73, 255);
+   elm_colorselector_palette_color_add(cs, 255, 255, 255, 255);
+   elm_colorselector_palette_color_add(cs, 0, 0, 0, 255);
+   elm_box_pack_end(box_settings, cs);
+   evas_object_show(cs);
+	evas_object_data_set(mainbox, "cs", cs);
+	
+	
+	o = elm_separator_add(box_settings);
    elm_separator_horizontal_set(o, EINA_TRUE);
    elm_box_pack_end(box_settings, o);
    evas_object_show(o);
