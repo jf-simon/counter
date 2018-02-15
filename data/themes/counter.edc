@@ -16,7 +16,7 @@ collections {
    group {
       name: "counter";
 //       max: 500 500;
-//       min: 50 50;
+      min: 1 1;
       parts {
          part { 
             name: "background";
