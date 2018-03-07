@@ -28,16 +28,19 @@ void         _config_load();
 void         _config_save(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED);
 void         _set_content(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED);
 
+	
+void 			_get_data();
+
 int        id_num;
 
 Evas_Object *win;
 Evas_Object *ly;
 
 int         ci_id;
-const char *ci_name;
-const char *ci_unit;
-double      ci_value;
-double      ci_factor;
+const char *ci_url;
+// const char *ci_unit;
+// double      ci_value;
+// double      ci_factor;
 int         ci_r;
 int         ci_g;
 int         ci_b;
@@ -48,10 +51,10 @@ Eina_List *configlist;
 
 typedef struct {
         int         id;
-        const char *name;
-        const char *unit;
-		  double      value;
-		  double      factor;
+        const char *url;
+//         const char *unit;
+// 		  double      value;
+// 		  double      factor;
 		  int         r;
 	     int         g;
         int         b;
