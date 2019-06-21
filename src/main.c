@@ -228,7 +228,7 @@ _set_content(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA
 
 	edje_object_part_text_set(ly, "value", buf);
 		
-	printf("set content\n");
+// 	printf("set content\n");
 }
 
 
@@ -239,7 +239,7 @@ set_color(Evas_Object *ly)
                                ci_r, ci_g, ci_b, ci_a,  /* Object color */
                                255, 255, 255, 0,   /* Text outline */
                                39, 90, 187, 255);  /* Text shadow  */
-	printf("SET COLOR: %i %i %i %i,\n", ci_r,ci_g,ci_b,ci_a);
+// 	printf("SET COLOR: %i %i %i %i,\n", ci_r,ci_g,ci_b,ci_a);
 }
 
 
@@ -251,6 +251,7 @@ _plus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const char
    char buf[64];
 	ci_value = ci_value + ci_factor;	
 	
+	Evas_Object *edje_obj = elm_layout_edje_get(ly);
 	//TODO move calculation in seperat function	
 	double new = floor(ci_value);
 	
@@ -259,8 +260,8 @@ _plus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const char
 	else
 		snprintf(buf, sizeof(buf), "%.2f", ci_value);
 	
-	edje_object_part_text_set(ly, "value", buf);
-	
+	edje_object_part_text_set(edje_obj, "value", buf);
+	printf("+\n");
 	_config_save(NULL, NULL, NULL, NULL);
 }
 
@@ -272,6 +273,7 @@ _minus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const cha
    char buf[64];
 	ci_value = ci_value - ci_factor;
 	
+	Evas_Object *edje_obj = elm_layout_edje_get(ly);
 	//TODO move calculation in seperat function
 	double new = floor(ci_value);
 	
@@ -280,8 +282,9 @@ _minus(void *data, Evas_Object *obj, const char *emission EINA_UNUSED, const cha
 	else
 		snprintf(buf, sizeof(buf), "%.2f", ci_value);
 	
-	edje_object_part_text_set(ly, "value", buf);
+	edje_object_part_text_set(edje_obj, "value", buf);
 	
+	printf("+\n");
 	_config_save(NULL, NULL, NULL, NULL);
 }
 
@@ -332,9 +335,9 @@ int elm_main(int argc, char *argv[])
    evas_object_show(win);
 	elm_layout_file_set(ly, buf, "counter");
 	
-   edje_object_signal_callback_add(ly, "settings", "settings", _settings_2, win);
-   edje_object_signal_callback_add(ly, "minus", "minus", _minus, win);
-   edje_object_signal_callback_add(ly, "plus", "plus", _plus, win);
+   elm_layout_signal_callback_add(ly, "settings", "settings", _settings_2, win);
+   elm_layout_signal_callback_add(ly, "minus", "minus", _minus, win);
+   elm_layout_signal_callback_add(ly, "plus", "plus", _plus, win);
 	
 	Evas_Object *edje_obj = elm_layout_edje_get(ly);
 	
