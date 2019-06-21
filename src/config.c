@@ -169,11 +169,15 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 {	
 <<<<<<< HEAD
 	Evas_Object *en_name, *en_unit, *en_value, *en_factor, *popup, *fr, *cs;
+<<<<<<< HEAD
    Evas_Object *o, *mainbox, *box_settings, *box_name, *box_value, *box_unit, *box_factor, *lbl;
 =======
 	Evas_Object *en_url, *en_unit, *en_value, *en_factor, *popup, *fr, *cs;
    Evas_Object *o, *mainbox, *box_settings, *box_url, *box_value, *box_unit, *box_factor, *lbl;
 >>>>>>> 5ede78fb396c3f01bd4ad55a082a809b2e268773
+=======
+   Evas_Object *o, *mainbox, *box_settings;
+>>>>>>> parent of 4ab88f4... wip
 	
 	Evas_Object *ly = obj;
 	Evas_Object *win = data;
@@ -204,6 +208,7 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 		   box_name = elm_box_add(box_settings);
 			elm_box_horizontal_set(box_name, EINA_TRUE);
 			E_EXPAND(box_name);
@@ -232,49 +237,34 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 			elm_box_pack_end(box_settings, box_name);
 	
 
+=======
+   en_name = elm_entry_add(box_settings);
+   elm_config_context_menu_disabled_set(EINA_FALSE);
+   elm_object_text_set(en_name, ci_name);
+   elm_entry_editable_set(en_name, EINA_TRUE);
+   elm_entry_single_line_set(en_name, EINA_TRUE);
+   evas_object_size_hint_weight_set(en_name, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+   evas_object_size_hint_align_set(en_name, EVAS_HINT_FILL, EVAS_HINT_FILL);
+	elm_box_pack_end(box_settings, en_name);
+	evas_object_show(en_name);
+   evas_object_data_set(mainbox, "en_name", en_name);
+>>>>>>> parent of 4ab88f4... wip
 
 	o = elm_separator_add(box_settings);
    elm_separator_horizontal_set(o, EINA_TRUE);
    elm_box_pack_end(box_settings, o);
    evas_object_show(o);
 	
-		   box_unit = elm_box_add(box_settings);
-			elm_box_horizontal_set(box_unit, EINA_TRUE);
-			E_EXPAND(box_unit);
-			E_ALIGN(box_unit, 0.0, 0.5);
-			evas_object_show(box_unit);
-			
-			lbl = elm_label_add(box_unit);
-			elm_object_text_set(lbl, "Name: ");
-			evas_object_size_hint_weight_set(lbl, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-			evas_object_size_hint_align_set(lbl, EVAS_HINT_FILL, EVAS_HINT_FILL);
-			elm_box_pack_end(box_unit, lbl);
-			evas_object_show(lbl);
-			evas_object_data_set(mainbox, "lbl", lbl);
-			
-			en_unit = elm_entry_add(box_unit);
-			elm_config_context_menu_disabled_set(EINA_TRUE);
-			elm_object_text_set(en_unit, ci_unit);
-			elm_entry_editable_set(en_unit, EINA_TRUE);
-			elm_entry_single_line_set(en_unit, EINA_TRUE);
-			evas_object_size_hint_weight_set(en_unit, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-			evas_object_size_hint_align_set(en_unit, EVAS_HINT_FILL, EVAS_HINT_FILL);
-			elm_box_pack_end(box_unit, en_unit);
-			evas_object_show(en_unit);
-			evas_object_data_set(mainbox, "en_unit", en_unit);
-			
-			elm_box_pack_end(box_settings, box_unit);
-			
-//    en_unit = elm_entry_add(box_settings);
-//    elm_config_context_menu_disabled_set(EINA_FALSE);
-//    elm_object_text_set(en_unit, ci_unit);
-//    elm_entry_editable_set(en_unit, EINA_TRUE);
-//    elm_entry_single_line_set(en_unit, EINA_TRUE);
-//    evas_object_size_hint_weight_set(en_unit, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-//    evas_object_size_hint_align_set(en_unit, EVAS_HINT_FILL, EVAS_HINT_FILL);
-// 	elm_box_pack_end(box_settings, en_unit);
-// 	evas_object_show(en_unit);
-//    evas_object_data_set(mainbox, "en_unit", en_unit);	
+   en_unit = elm_entry_add(box_settings);
+   elm_config_context_menu_disabled_set(EINA_FALSE);
+   elm_object_text_set(en_unit, ci_unit);
+   elm_entry_editable_set(en_unit, EINA_TRUE);
+   elm_entry_single_line_set(en_unit, EINA_TRUE);
+   evas_object_size_hint_weight_set(en_unit, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+   evas_object_size_hint_align_set(en_unit, EVAS_HINT_FILL, EVAS_HINT_FILL);
+	elm_box_pack_end(box_settings, en_unit);
+	evas_object_show(en_unit);
+   evas_object_data_set(mainbox, "en_unit", en_unit);	
 
 	o = elm_separator_add(box_settings);
    elm_separator_horizontal_set(o, EINA_TRUE);
@@ -288,41 +278,14 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 	char buf1[4096];
    snprintf(buf1, sizeof(buf1), "%.2f", ci_value);
 	
-		   box_value = elm_box_add(box_settings);
-			elm_box_horizontal_set(box_value, EINA_TRUE);
-			E_EXPAND(box_value);
-			E_ALIGN(box_value, 0.0, 0.5);
-			evas_object_show(box_value);
-			
-			lbl = elm_label_add(box_value);
-			elm_object_text_set(lbl, "Name: ");
-			evas_object_size_hint_weight_set(lbl, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-			evas_object_size_hint_align_set(lbl, EVAS_HINT_FILL, EVAS_HINT_FILL);
-			elm_box_pack_end(box_value, lbl);
-			evas_object_show(lbl);
-			evas_object_data_set(mainbox, "lbl", lbl);
-			
-			en_value = elm_entry_add(box_value);
-			elm_config_context_menu_disabled_set(EINA_TRUE);
-			elm_object_text_set(en_value, buf1);
-			elm_entry_editable_set(en_value, EINA_TRUE);
-			elm_entry_single_line_set(en_value, EINA_TRUE);
-			evas_object_size_hint_weight_set(en_value, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-			evas_object_size_hint_align_set(en_value, EVAS_HINT_FILL, EVAS_HINT_FILL);
-			elm_box_pack_end(box_value, en_value);
-			evas_object_show(en_value);
-			evas_object_data_set(mainbox, "en_value", en_value);
-			
-			elm_box_pack_end(box_settings, box_value);
-			
-//    elm_object_text_set(en_value, buf1);
-//    elm_entry_editable_set(en_value, EINA_TRUE);
-//    elm_entry_single_line_set(en_value, EINA_TRUE);
-//    evas_object_size_hint_weight_set(en_value, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-//    evas_object_size_hint_align_set(en_value, EVAS_HINT_FILL, EVAS_HINT_FILL);
-// 	elm_box_pack_end(box_settings, en_value);
-// 	evas_object_show(en_value);
-//    evas_object_data_set(mainbox, "en_value", en_value);	
+   elm_object_text_set(en_value, buf1);
+   elm_entry_editable_set(en_value, EINA_TRUE);
+   elm_entry_single_line_set(en_value, EINA_TRUE);
+   evas_object_size_hint_weight_set(en_value, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+   evas_object_size_hint_align_set(en_value, EVAS_HINT_FILL, EVAS_HINT_FILL);
+	elm_box_pack_end(box_settings, en_value);
+	evas_object_show(en_value);
+   evas_object_data_set(mainbox, "en_value", en_value);	
 				
 	o = elm_separator_add(box_settings);
    elm_separator_horizontal_set(o, EINA_TRUE);
@@ -334,6 +297,7 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 	
    snprintf(buf1, sizeof(buf1), "%.2f", ci_factor);
 	
+<<<<<<< HEAD
 		   box_factor = elm_box_add(box_settings);
 			elm_box_horizontal_set(box_factor, EINA_TRUE);
 			E_EXPAND(box_factor);
@@ -398,6 +362,16 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 	
 
 >>>>>>> 5ede78fb396c3f01bd4ad55a082a809b2e268773
+=======
+   elm_object_text_set(en_factor, buf1);
+   elm_entry_editable_set(en_factor, EINA_TRUE);
+   elm_entry_single_line_set(en_factor, EINA_TRUE);
+   evas_object_size_hint_weight_set(en_factor, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+   evas_object_size_hint_align_set(en_factor, EVAS_HINT_FILL, EVAS_HINT_FILL);
+	elm_box_pack_end(box_settings, en_factor);
+	evas_object_show(en_factor);
+   evas_object_data_set(mainbox, "en_factor", en_factor);
+>>>>>>> parent of 4ab88f4... wip
 
    o = elm_separator_add(box_settings);
    elm_separator_horizontal_set(o, EINA_TRUE);

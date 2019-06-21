@@ -154,18 +154,18 @@ collections {
          }
          
       programs {
-//          program {
-//             name: "click_settings";
-//             signal: "mouse,down,3";
-//             source: "l_klick";
-//             action: SIGNAL_EMIT "settings" "settings";
-//          }
-//          program {
-//             name: "click_settings1";
-//             signal: "mouse,down,3";
-//             source: "r_klick";
-//             action: SIGNAL_EMIT "settings" "settings";
-//          }
+         program {
+            name: "click_settings";
+            signal: "mouse,down,3";
+            source: "l_klick";
+            action: SIGNAL_EMIT "settings" "settings";
+         }
+         program {
+            name: "click_settings1";
+            signal: "mouse,down,3";
+            source: "r_klick";
+            action: SIGNAL_EMIT "settings" "settings";
+         }
          program {
             name: "click_plus";
             signal: "mouse,down,1";
