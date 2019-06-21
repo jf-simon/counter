@@ -170,11 +170,15 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 <<<<<<< HEAD
 	Evas_Object *en_name, *en_unit, *en_value, *en_factor, *popup, *fr, *cs;
 <<<<<<< HEAD
+<<<<<<< HEAD
    Evas_Object *o, *mainbox, *box_settings, *box_name, *box_value, *box_unit, *box_factor, *lbl;
 =======
 	Evas_Object *en_url, *en_unit, *en_value, *en_factor, *popup, *fr, *cs;
    Evas_Object *o, *mainbox, *box_settings, *box_url, *box_value, *box_unit, *box_factor, *lbl;
 >>>>>>> 5ede78fb396c3f01bd4ad55a082a809b2e268773
+=======
+   Evas_Object *o, *mainbox, *box_settings;
+>>>>>>> parent of 4ab88f4... wip
 =======
    Evas_Object *o, *mainbox, *box_settings;
 >>>>>>> parent of 4ab88f4... wip
@@ -209,6 +213,7 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 	
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		   box_name = elm_box_add(box_settings);
 			elm_box_horizontal_set(box_name, EINA_TRUE);
 			E_EXPAND(box_name);
@@ -238,6 +243,8 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 	
 
 =======
+=======
+>>>>>>> parent of 4ab88f4... wip
    en_name = elm_entry_add(box_settings);
    elm_config_context_menu_disabled_set(EINA_FALSE);
    elm_object_text_set(en_name, ci_name);
@@ -248,6 +255,9 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 	elm_box_pack_end(box_settings, en_name);
 	evas_object_show(en_name);
    evas_object_data_set(mainbox, "en_name", en_name);
+<<<<<<< HEAD
+>>>>>>> parent of 4ab88f4... wip
+=======
 >>>>>>> parent of 4ab88f4... wip
 
 	o = elm_separator_add(box_settings);
@@ -297,6 +307,7 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 	
    snprintf(buf1, sizeof(buf1), "%.2f", ci_factor);
 	
+<<<<<<< HEAD
 <<<<<<< HEAD
 		   box_factor = elm_box_add(box_settings);
 			elm_box_horizontal_set(box_factor, EINA_TRUE);
@@ -363,6 +374,8 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 
 >>>>>>> 5ede78fb396c3f01bd4ad55a082a809b2e268773
 =======
+=======
+>>>>>>> parent of 4ab88f4... wip
    elm_object_text_set(en_factor, buf1);
    elm_entry_editable_set(en_factor, EINA_TRUE);
    elm_entry_single_line_set(en_factor, EINA_TRUE);
@@ -371,6 +384,9 @@ _settings(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 	elm_box_pack_end(box_settings, en_factor);
 	evas_object_show(en_factor);
    evas_object_data_set(mainbox, "en_factor", en_factor);
+<<<<<<< HEAD
+>>>>>>> parent of 4ab88f4... wip
+=======
 >>>>>>> parent of 4ab88f4... wip
 
    o = elm_separator_add(box_settings);

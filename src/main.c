@@ -362,6 +362,7 @@ show_popup(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_U
 		
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // 	printf("set content\n");
 =======
 		elm_list_item_append(li, list_data->title, ic, NULL, _it_clicked, list_data->link);
@@ -533,6 +534,9 @@ show_popup(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_U
 =======
 	printf("set content\n");
 >>>>>>> parent of 4ab88f4... wip
+=======
+	printf("set content\n");
+>>>>>>> parent of 4ab88f4... wip
 }
 
 
@@ -545,6 +549,7 @@ set_color(Evas_Object *ly)
                                255, 255, 255, 0,   /* Text outline */
                                39, 90, 187, 255);  /* Text shadow  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 // 	printf("SET COLOR: %i %i %i %i,\n", ci_r,ci_g,ci_b,ci_a);
 =======
 	edje_object_color_class_set(ly, "colorclass",
@@ -553,6 +558,9 @@ set_color(Evas_Object *ly)
                                39, 90, 187, 255);
 	printf("SET COLOR: %i %i %i %i,\n", ci_r,ci_g,ci_b,ci_a);
 >>>>>>> 5ede78fb396c3f01bd4ad55a082a809b2e268773
+=======
+	printf("SET COLOR: %i %i %i %i,\n", ci_r,ci_g,ci_b,ci_a);
+>>>>>>> parent of 4ab88f4... wip
 =======
 	printf("SET COLOR: %i %i %i %i,\n", ci_r,ci_g,ci_b,ci_a);
 >>>>>>> parent of 4ab88f4... wip
@@ -613,6 +621,7 @@ parse_rdf(void *data)
 {
 	Eina_Strbuf *mybuffer = data;
 	
+<<<<<<< HEAD
 // 	printf("%s : %ld TEST\n", eina_strbuf_string_get(mybuffer), eina_strbuf_length_get(mybuffer));
 	
 	char **arr, **arr1;
@@ -976,6 +985,8 @@ _url_data_cb(void *data EINA_UNUSED, int type EINA_UNUSED, void *event_info)
 	Evas_Object *edje_obj = elm_layout_edje_get(ly);
 =======
 >>>>>>> parent of 4ab88f4... wip
+=======
+>>>>>>> parent of 4ab88f4... wip
 	//TODO move calculation in seperat function	
 	double new = floor(ci_value);
 =======
@@ -1028,11 +1039,16 @@ _data_complete(void *data EINA_UNUSED, int type, void *event_info)
 		edje_object_signal_emit(edje_obj, "reload", "failed");
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 // 	printf("%s : %ld COMPLETE\n", eina_strbuf_string_get(feeddata), eina_strbuf_length_get(feeddata));
 	
 <<<<<<< HEAD
 	edje_object_part_text_set(edje_obj, "value", buf);
 	printf("+\n");
+=======
+	edje_object_part_text_set(ly, "value", buf);
+	
+>>>>>>> parent of 4ab88f4... wip
 =======
 	edje_object_part_text_set(ly, "value", buf);
 	
@@ -1076,7 +1092,10 @@ _get_data()
 	
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	Evas_Object *edje_obj = elm_layout_edje_get(ly);
+=======
+>>>>>>> parent of 4ab88f4... wip
 =======
 >>>>>>> parent of 4ab88f4... wip
 	//TODO move calculation in seperat function
@@ -1112,7 +1131,11 @@ _get_data()
 	
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	edje_object_part_text_set(edje_obj, "value", buf);
+=======
+	edje_object_part_text_set(ly, "value", buf);
+>>>>>>> parent of 4ab88f4... wip
 =======
 	edje_object_part_text_set(ly, "value", buf);
 >>>>>>> parent of 4ab88f4... wip
@@ -1175,12 +1198,18 @@ int elm_main(int argc, char *argv[])
 	
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
    elm_layout_signal_callback_add(ly, "settings", "settings", _settings_2, win);
    elm_layout_signal_callback_add(ly, "minus", "minus", _minus, win);
    elm_layout_signal_callback_add(ly, "plus", "plus", _plus, win);
 =======
    edje_object_signal_callback_add(ly, "settings", "settings", _settings_2, win);
 >>>>>>> 5ede78fb396c3f01bd4ad55a082a809b2e268773
+=======
+   edje_object_signal_callback_add(ly, "settings", "settings", _settings_2, win);
+   edje_object_signal_callback_add(ly, "minus", "minus", _minus, win);
+   edje_object_signal_callback_add(ly, "plus", "plus", _plus, win);
+>>>>>>> parent of 4ab88f4... wip
 =======
    edje_object_signal_callback_add(ly, "settings", "settings", _settings_2, win);
    edje_object_signal_callback_add(ly, "minus", "minus", _minus, win);
