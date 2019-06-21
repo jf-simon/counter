@@ -7,12 +7,12 @@ deps = [
 ]
 
 src = [
-  'counter.h',
+  'news.h',
   'main.c',
   'config.c'
 ]
 
-executable('counter',
+executable('news',
   src,
   dependencies: deps,
   c_args : ['-fPIE', '-fPIC'],

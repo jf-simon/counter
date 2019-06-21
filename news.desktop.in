@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=News
+Exec=@GADGET_DIR@/news
+Icon=news
+X-Gadget-Version=@VERSION@
+X-Gadget-Bugreport=https://www.enlightenment.org/contrib/report-bug

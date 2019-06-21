@@ -1,9 +1,9 @@
-project('counter', 'c',
+project('news', 'c',
         version        : '0.1',
         license        : 'BSD 2 clause',
         default_options: [ 'c_std=gnu99' ],
         meson_version  : '>= 0.40.0')
-base_url = 'https://github.com/jf-simon/counter'
+base_url = 'https://github.com/jf-simon/news'
 
 e = dependency('enlightenment')
 
@@ -69,8 +69,8 @@ desktop_data = configuration_data()
         desktop_data.set('GADGET_DIR', install_dir)
         desktop_data.set('VERSION', meson.project_version())
 
-configure_file(input: 'counter.desktop.in',
-        output: 'counter.desktop',
+configure_file(input: 'news.desktop.in',
+        output: 'news.desktop',
         install: true,
         install_dir: install_dir,
         configuration: desktop_data)
